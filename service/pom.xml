@@ -65,16 +65,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<image>
-						<buildpacks>
-							<buildpack>
-								paketobuildpacks/java-native-image:beta
-							</buildpack>
-							<builder>paketobuildpacks/builder-jammy-buildpackless-tiny</builder>
-						</buildpacks>
-					</image>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
