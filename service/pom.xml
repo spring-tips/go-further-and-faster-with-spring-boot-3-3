@@ -65,7 +65,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
+		<!--		<configuration>
 					<image>
 						<buildpacks>
 							<buildpack>
@@ -74,7 +74,17 @@
 							<builder>paketobuildpacks/builder-jammy-buildpackless-tiny</builder>
 						</buildpacks>
 					</image>
-				</configuration>
+				</configuration>-->
+
+
+				<executions>
+					<execution>
+						<id>process-aot</id>
+						<goals>
+							<goal>process-aot</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
