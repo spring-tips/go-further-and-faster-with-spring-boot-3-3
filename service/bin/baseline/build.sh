@@ -11,7 +11,7 @@ sleep 10
 mkdir -p $HOME/Desktop/timings/
 curl http://localhost:8080/dogs >> $HOME/Desktop/timings/baseline-dogs
 curl http://localhost:8080/startup >> $HOME/Desktop/timings/baseline-startup
-#docker rm -f ${RUN_ID}
+docker rm -f ${RUN_ID}
 
 
 
