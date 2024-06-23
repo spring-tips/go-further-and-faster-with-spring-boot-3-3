@@ -47,7 +47,7 @@ public class ServiceApplication {
         return route()
                 .GET("/startup", request -> {
                     var duration = Duration.between(START_TIME.get(), STOP_TIME.get());
-                    return ServerResponse.ok().body(Map.of("startup", duration.toString()));
+                    return ServerResponse.ok().body(Map.of("startup", duration.toString().substring(2)));
                 })
                 .GET("/dogs", request -> ServerResponse.ok().body(repository.findAll()))
                 .build();
