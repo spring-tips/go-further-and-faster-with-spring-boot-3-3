@@ -50,8 +50,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
+		<dependency>
+			<groupId>org.crac</groupId>
+			<artifactId>crac</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

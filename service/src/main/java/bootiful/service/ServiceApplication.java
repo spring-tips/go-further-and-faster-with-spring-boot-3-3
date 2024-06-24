@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.SmartLifecycle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportRuntimeHints;
 import org.springframework.core.io.ClassPathResource;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.function.ServerResponse;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static org.springframework.web.servlet.function.RouterFunctions.route;
@@ -69,6 +71,31 @@ public class ServiceApplication {
                 })
                 .GET("/dogs", request -> ServerResponse.ok().body(repository.findAll()))
                 .build();
+    }
+}
+
+
+@Component
+class CracLifecycle implements SmartLifecycle {
+
+    private final AtomicBoolean running = new AtomicBoolean(false);
+
+    @Override
+    public void start() {
+        if (this.running.compareAndSet(false, true))
+            System.out.println("CRAC starting");
+    }
+
+    @Override
+    public void stop() {
+        if (this.running.compareAndSet(true, false))
+            System.out.println("CRAC stopping");
+
+    }
+
+    @Override
+    public boolean isRunning() {
+        return this.running.get();
     }
 }
 
